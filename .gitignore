@@ -1,0 +1,10 @@
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Maven
+target/
+dependency-reduced-pom.xml
+pom.xml.versionsBackup
+.factorypath
