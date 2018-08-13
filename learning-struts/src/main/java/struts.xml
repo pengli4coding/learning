@@ -4,11 +4,104 @@
     "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-
+	
+	<!-- 覆盖default.properties文件中的相同配置，启动开发者模式 -->
     <constant name="struts.devMode" value="true" />
-
-    <package name="com.pl.demo1" extends="struts-default">
-        <action name="demo1" class="com.pl.demo1.controller.Demo1Action1" method="hello">
+    
+    <!-- 覆盖default.properties文件中的相同配置，修改请求的后缀名 -->
+    <!-- 当常量struts.action.extension的值为do,,的时候，下面的请求方式有效： -->
+    <!-- http://localhost:8080/learning-struts/hello -->
+    <!-- http://localhost:8080/learning-struts/hello.do -->
+    <!-- 当常量struts.action.extension的值为do,,的时候，下面的请求方式是无效的： -->
+    <!-- http://localhost:8080/learning-struts/hello.action -->
+    <constant name="struts.action.extension" value="do,," />
+    
+    <!-- 覆盖default.properties文件中的相同配置，开启浏览器的静态资源的缓存（默认就是开启的） -->
+    <!-- 这里有个应用场景就是页面上使用图片验证码的时候，点击换一张图片的时候，url地址是不变的 -->
+    <!-- 如果这时候设置为true开启浏览器缓存的话，那么就直接用浏览器缓存的上一张图片，做不了换一张图片的效果，这时候要设置为false -->
+    <constant name="struts.serve.static.browserCache" value="true" />
+    
+    <!-- 
+    	package标签代表包，可以用于区分不同的项目模块，如订单模块，客户登录模块等
+    		有如下的一些属性配置：
+    		name属性：指定包的名称，如name="loginModule"，从名称可以辨认这个是登录模块
+    		extends属性：表示继承自哪个包，默认情况下我们必须要继承struts-default,否则我们无法使用struts框架
+    		abstract属性：如果为abstract="true"的时候则指示当前包为抽象包，抽象包里面不能有action的配置
+    		namespace属性：action的访问路径，如namespace="/demo1"的时候，可以通过"http://localhost:8080/项目名/demo1/action名"来访问action
+    					      而无法通过"http://localhost:8080/项目名/action名"来访问action，会报404
+    					      常常用于请求访问时指定某一个包的路径，目的区分不同包的相同的Action名字
+     -->
+     
+     <!-- 
+     	action标签用于动作类的配置
+     		有如下的一些属性配置：
+     		name属性：指定action名称（必填），我们通过在url上指定该名称来访问对应的aciton动作类
+     		                         如：我们可以通过"http://localhost:8080/learning-struts/login"来访问名称为login的动作类
+     		                         或者通过"http://localhost:8080/learning-struts/login.do"来访问名称为login的动作类
+     		class属性：action动作类的全类名
+     		method属性：方法名，如下例中的hello方法名
+     		
+     		示例action动作类
+      		public class MyAction{
+      			public String hello(){
+      				return "success";
+      				//return "aaa";
+      				//return "bbb";
+      			}
+      		}
+      -->
+      
+      <!-- 
+      	result标签用于配置要跳转的视图
+      		有如下的一些属性配置：
+      		name属性：到底Action返回哪个视图是由Action的方法的返回值来决定，返回值和result视图的name属性值做匹配，从而返回相应的视图
+      		                         如下例中的"success"、"aaa"、"bbb"、
+      		type属性：跳转视图的方式，如请求转发，重定向等，不配置该属性的时候，默认为请求转发dispatcher类型
+      		
+      		示例action动作类
+      		public class MyAction{
+      			public String hello(){
+      				return "success";
+      				//return "aaa";
+      				//return "bbb";
+      			}
+      		}
+       -->
+    
+	<!-- demo1的配置 ，demo1主要学习struts框架最简单的helloworld-->
+    <package name="com.pl.demo1" extends="struts-default" namespace="/demo1">
+        <action name="action1" class="com.pl.demo1.controller.Demo1Action1" method="hello">
+            <result name="success">/demo1_jsp/demo1.jsp</result>
+        </action>
+    </package>
+    
+    <!-- demo2的配置，demo2主要学习action动作类的三种创建方法 -->
+    <package name="com.pl.demo2" extends="struts-default" namespace="/demo2">
+    
+        <action name="action1" class="com.pl.demo2.controller.Demo2Action1" method="hello">
+            <result name="success">/demo2_jsp/demo2.jsp</result>
+        </action>
+        <!--  
+                      如果没有在action标签中配置method属性指定方法的话，则默认会去找action动作类中的execute()方法
+                      如下面的配置就没有配置到method属性
+        <action name="action1" class="com.pl.demo2.controller.Demo2Action1">
+            <result name="success">/demo2_jsp/demo2.jsp</result>
+        </action>
+        -->
+        
+        <action name="action2" class="com.pl.demo2.controller.Demo2Action2">
+            <result name="success">/demo2_jsp/demo2.jsp</result>
+        </action>
+        
+        <action name="action3" class="com.pl.demo2.controller.Demo2Action3">
+            <result name="success">/demo2_jsp/demo2.jsp</result>
+        </action>
+        
+    </package>
+    
+    	<!-- demo1的配置 ，demo1主要学习struts框架最简单的helloworld-->
+    <package name="com.pl.demo1" extends="struts-default" namespace="/demo1">
+        <action name="action1" class="com.pl.demo1.controller.Demo1Action1" method="hello">
             <result name="success">/demo1_jsp/demo1.jsp</result>
         </action>
     </package>
