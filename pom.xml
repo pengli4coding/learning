@@ -72,5 +72,9 @@
 	</build>
 	<modules>
 		<module>learning-mybatis</module>
+		<module>learning-spring</module>
+		<module>learning-struts</module>
+		<module>learning-hibernate</module>
+		<module>learning-springmvc</module>
 	</modules>
 </project>
