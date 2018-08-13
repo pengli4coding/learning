@@ -10,10 +10,10 @@ learning项目是本人在学习一些主流开发框架（如spring、springmvc
 
 ## 包含模块
 
-- learning-spring          学习spring框架过程中的样例代码
-- learning-struts          学习struts框架过程中的样例代码
-- learning-hibernate       学习hibernate框架过程中的样例代码
-- learning-springmvc       学习springmvc框架过程中的样例代码
-- learning-mybatis         学习mybatis框架过程中的样例代码
+- learning-spring&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习spring框架过程中的样例代码　　　
+- learning-struts&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习struts框架过程中的样例代码
+- learning-hibernate&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习hibernate框架过程中的样例代码
+- learning-springmvc&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习springmvc框架过程中的样例代码
+- learning-mybatis&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习mybatis框架过程中的样例代码
 
 -------------------------------------------------------------------------------
