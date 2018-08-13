@@ -2,21 +2,34 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<!-- 是pom工程还是jar工程还是war工程 -->
+	<packaging>pom</packaging>
+
+	<!-- 坐标信息 -->
 	<groupId>com.learning</groupId>
 	<artifactId>learning-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
+
+	<!-- 项目描述 -->
 	<name>learning</name>
 	<description>learning项目的父工程</description>
+
+	<!-- 子模块 -->
+	<modules>
+		<module>learning-mybatis</module>
+		<module>learning-spring</module>
+		<module>learning-struts</module>
+		<module>learning-hibernate</module>
+		<module>learning-springmvc</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
 
-		<!-- versions -->
+		<!-- 依赖包的版本控制 -->
 		<junit.version>4.12</junit.version>
-		<servlet-api.version>3.1.0</servlet-api.version>
-		<log4j.version>1.2.17</log4j.version>
 		<sqljdbc.version>4.0.2206.100</sqljdbc.version>
 	</properties>
 
@@ -27,20 +40,10 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>javax.servlet-api</artifactId>
-				<version>${servlet-api.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>com.hynnet</groupId>
 				<artifactId>sqljdbc4-chs</artifactId>
@@ -70,11 +73,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<modules>
-		<module>learning-mybatis</module>
-		<module>learning-spring</module>
-		<module>learning-struts</module>
-		<module>learning-hibernate</module>
-		<module>learning-springmvc</module>
-	</modules>
+
 </project>
