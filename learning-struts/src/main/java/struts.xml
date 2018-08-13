@@ -99,10 +99,10 @@
         
     </package>
     
-    	<!-- demo1的配置 ，demo1主要学习struts框架最简单的helloworld-->
+    <!-- demo3的配置 ，demo3主要学习action动作类的生命周期-->
     <package name="com.pl.demo3" extends="struts-default" namespace="/demo3">
-        <action name="action1" class="com.pl.demo1.controller.Demo1Action1" method="hello">
-            <result name="success">/demo1_jsp/demo1.jsp</result>
+        <action name="action1" class="com.pl.demo3.controller.Demo3Action1" method="hello">
+            <result name="success">/demo3_jsp/demo3.jsp</result>
         </action>
     </package>
 
