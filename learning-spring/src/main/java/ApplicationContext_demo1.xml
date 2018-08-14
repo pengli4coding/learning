@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 特别说明，spring的配置文件一般叫做ApplicationContext.xml，这里为了演示方便，用ApplicationContext_demo1.xml、ApplicationContext_demo2.xml之类的配置文件名 -->
+
+
+
+	<bean id="service" class="com.pl.demo1.Service">
+		<property name="dao" ref="mysql" /><!-- 注入DaoOracleImpl到service中的dao成员变量 -->
+	</bean>
+
+	<bean id="mysql" class="com.pl.demo1.DaoMysqlImpl" /><!-- 对DaoMysqlImpl进行实例化并纳入到spring容器中 -->
+
+	<bean id="oracle" class="com.pl.demo1.DaoOracleImpl" /><!-- 对DaoOracleImpl进行实例化并纳入到spring容器中 -->
+
+</beans>
