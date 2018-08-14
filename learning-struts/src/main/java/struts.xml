@@ -169,7 +169,6 @@
     
     
     <!-- demo6的配置 ，demo6主要学习同一个包内的全局结果视图，以及所有包的全局结果视图-->
-    
     <package name="basePackage" extends="struts-default" abstract="true">
         <global-results>
         	<!-- 配置所有包下的全局结果视图 -->
@@ -186,6 +185,16 @@
         </action>
         <action name="action2" class="com.pl.demo6.controller.Demo6Action2" method="hello">
             <!-- <result name="success">/demo6_jsp/demo6_1.jsp</result> --><!-- 取消局部结果视图的配置 -->
+        </action>
+    </package>
+    
+    <!-- demo7的配置 ，demo7主要学习在action动作类中获取servlet的API-->
+    <package name="com.pl.demo7" extends="struts-default" namespace="/demo7">
+        <action name="action1" class="com.pl.demo7.controller.Demo7Action1" method="hello">
+            <result name="success">/demo7_jsp/demo7.jsp</result>
+        </action>
+        <action name="action2" class="com.pl.demo7.controller.Demo7Action2" method="hello">
+            <result name="success">/demo7_jsp/demo7.jsp</result>
         </action>
     </package>
 
