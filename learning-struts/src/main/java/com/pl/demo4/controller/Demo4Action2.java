@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class Demo4Action2 extends ActionSupport{
 	
 	public String hello() {
+		System.out.println("这是第二个action");
 		return SUCCESS;
 	}
 }
