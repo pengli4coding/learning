@@ -165,6 +165,29 @@
             <result name="success">/demo5_jsp/demo5.jsp</result>
         </action>
     </package>
+    
+    
+    
+    <!-- demo6的配置 ，demo6主要学习同一个包内的全局结果视图，以及所有包的全局结果视图-->
+    
+    <package name="basePackage" extends="struts-default" abstract="true">
+        <global-results>
+        	<!-- 配置所有包下的全局结果视图 -->
+        	<!-- 其它包如果要使用这个结果视图，则必须要继承这个包 -->
+        	<result name="error" type="dispatcher">/demo6_jsp/demo6_2.jsp</result>
+        </global-results>
+    </package>
+    <package name="com.pl.demo6" extends="basePackage" namespace="/demo6"><!-- 注意这个包是继承了basePackage包的 -->
+		<global-results>
+			<result name="success" type="dispatcher">/demo6_jsp/demo6_1.jsp</result><!-- 配置同一个包下的全局结果视图 -->
+		</global-results>
+        <action name="action1" class="com.pl.demo6.controller.Demo6Action1" method="hello">
+            <!-- <result name="success">/demo6_jsp/demo6_1.jsp</result> --><!-- 取消局部结果视图的配置 -->
+        </action>
+        <action name="action2" class="com.pl.demo6.controller.Demo6Action2" method="hello">
+            <!-- <result name="success">/demo6_jsp/demo6_1.jsp</result> --><!-- 取消局部结果视图的配置 -->
+        </action>
+    </package>
 
 </struts>
 
