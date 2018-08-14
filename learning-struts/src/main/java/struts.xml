@@ -105,6 +105,33 @@
             <result name="success">/demo3_jsp/demo3.jsp</result>
         </action>
     </package>
+    
+    <!-- demo4的配置 ，demo4主要学习action动作类的结果视图配置-->
+    <package name="com.pl.demo4" extends="struts-default" namespace="/demo4">
+    	<!-- 
+    		action动作类的结果视图配置主要是配置result标签中的type属性，主要有以下的一些属性：
+    			dispatcher（默认）：请求转发，浏览器地址栏不变
+    			redirect：重定向，浏览器地址栏变化
+    			chain：请求转发到另外一个action动作类，浏览器地址栏不变
+    			redirectAction：重定向到另外一个action动作类，浏览器地址栏变化
+    			stream：用于文件的上传下载
+    	 -->
+        <action name="dispatcher" class="com.pl.demo4.controller.Demo4Action1" method="dispatcherDemo">
+            <result name="success" type="dispatcher">/demo4_jsp/demo4.jsp</result>
+        </action>
+        
+        <action name="redirect" class="com.pl.demo4.controller.Demo4Action1" method="redirectDemo">
+            <result name="success" type="redirect">/demo4_jsp/demo4.jsp</result>
+        </action>
+        
+        <action name="chain" class="com.pl.demo4.controller.Demo4Action1" method="chainDemo">
+            <result name="success" type="chain">/demo4_jsp/demo4.jsp</result>
+        </action>
+        
+        <action name="redirectAction" class="com.pl.demo4.controller.Demo4Action1" method="redirectActionDemo">
+            <result name="success" type="redirectAction">/demo4_jsp/demo4.jsp</result>
+        </action>
+    </package>
 
 </struts>
 
