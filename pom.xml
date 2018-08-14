@@ -22,6 +22,7 @@
 		<module>learning-struts</module>
 		<module>learning-hibernate</module>
 		<module>learning-springmvc</module>
+		<module>learning-springboot</module>
 	</modules>
 
 	<properties>
