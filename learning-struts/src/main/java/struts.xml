@@ -197,6 +197,15 @@
             <result name="success">/demo7_jsp/demo7.jsp</result>
         </action>
     </package>
+    
+    <!-- demo8的配置 ，demo8主要学习静态参数的封装-->
+    <package name="com.pl.demo8" extends="struts-default" namespace="/demo8">
+        <action name="action1" class="com.pl.demo8.controller.Demo8Action1" method="hello">
+        	<param name="name">小立立</param><!-- 静态参数的值，这里name属性值必须对于action动作类中的成员变量名 -->
+        	<param name="address">中国广东深圳</param><!-- 静态参数的值，这里name属性值必须对于action动作类中的成员变量名 -->
+            <result name="success">/demo8_jsp/demo8.jsp</result>
+        </action>
+    </package>
 
 </struts>
 
