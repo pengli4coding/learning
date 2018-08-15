@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 特别说明，spring的配置文件一般叫做ApplicationContext.xml，这里为了演示方便，用ApplicationContext_demo1.xml、ApplicationContext_demo2.xml之类的配置文件名 -->
+
+
+	<bean id="bean1" class="com.pl.demo2.Bean1" /><!-- 通过构造器的方式创建bean（最常用，开发过程中推荐使用） -->
+	
+	<!-- 通过静态工厂方法的方式创建bean（不常用） -->
+	<!-- 
+		class属性：静态工厂的全类名
+		factory-method属性：静态工厂中返回bean实例的静态方法
+	 -->
+	<bean id="bean2" class="com.pl.demo2.StaticFactory" factory-method="getBean2Instance"/>
+	
+	<!-- 
+		通过实例工厂方法的方式创建bean（不常用）
+		要分两步走：
+		第一步：创建工厂bean，工厂bean一定要提供无参构造器
+		第二步：通过工厂bean拿到真实bean，真实bean不需要提供无参构造器
+	 -->
+	<!-- 第一步 -->
+	<bean id="instanceFactoryMethod" class="com.pl.demo2.InstanceFactory" />
+	<!-- 第二步
+		factory-bean属性：第一步中创建的工厂bean的id号
+		factory-method属性：第一步中创建的工厂bean的可以返回真实bean的方法（不要求是静态方法）
+	 -->
+	<bean id="bean3" factory-bean="instanceFactoryMethod" factory-method="getBean3Instance"/>
+
+
+</beans>
