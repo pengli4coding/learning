@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 特别说明，spring的配置文件一般叫做ApplicationContext.xml，这里为了演示方便，用ApplicationContext_demo1.xml、ApplicationContext_demo2.xml之类的配置文件名 -->
+
+	<bean id="notlazyinit" class="com.pl.demo4.NotLazyInitBean" /><!-- 这里没有配置lazy-init属性，默认单例是非延迟加载的、多例是延迟加载的，相当于lazy-init="false" -->
+	
+	<bean id="lazyinit" class="com.pl.demo4.LazyInitBean" lazy-init="true" /><!-- 配置了lazy-init="true"，bean是延迟加载的 -->
+	
+	<bean id="singleton" class="com.pl.demo4.SingletonBean" init-method="init" destroy-method="destroy"/><!-- 这里没有配置scope属性，默认是单例的，相当于scope="singleton" -->
+	
+	<bean id="prototype" class="com.pl.demo4.PrototypeBean" scope="prototype" init-method="init" destroy-method="destroy"/><!-- 配置了scope="prototype"，bean是多例的 -->
+
+
+</beans>
