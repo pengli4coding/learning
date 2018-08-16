@@ -23,6 +23,7 @@
 		<module>learning-hibernate</module>
 		<module>learning-springmvc</module>
 		<module>learning-springboot</module>
+		<module>learning-JDBC</module>
 	</modules>
 
 	<properties>
