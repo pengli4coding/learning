@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace:映射文件的命名空间，一般使用映射文件所在报名+映射文件名来指定
+	                  如UserMapper.xml映射文件在com.pl.demo1包下，则指定namespace="com.pl.demo1.UserMapper"
+ -->
+<mapper namespace="com.pl.demo2.EmployeesMapper">
+
+	
+	<resultMap type="com.pl.demo2.Employees" id="BaseResultMap1">
+		<id column="EMP_NO" property="empNo"/>
+		<result column="BIRTHDAY" property="birthday"/>
+		<result column="FIRST_NAME" property="firstName"/>
+		<result column="LAST_NAME" property="lastName"/>
+	</resultMap>
+	
+	<resultMap type="com.pl.demo2.Employees" id="BaseResultMap2">
+		<result column="EMP_NO" property="empNo"/>
+		<result column="BIRTHDAY" property="birthday"/>
+		<result column="FIRST_NAME" property="firstName"/>
+		<result column="LAST_NAME" property="lastName"/>
+	</resultMap>
+
+	<select id="selectEmployeeById" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+	<![CDATA[
+		select * from EMPLOYEES where EMP_NO = #{id}
+	]]>
+	</select>
+	
+	<select id="selectEmployeeByIdWithAlias" parameterType="java.lang.Integer" resultType="com.pl.demo2.Employees">
+	<![CDATA[
+		select 
+			EMP_NO      empNo,
+			BIRTHDAY    birthday,
+			FIRST_NAME  firstName,
+			LAST_NAME   lastName
+		from EMPLOYEES where EMP_NO = #{id}
+	]]>
+	</select>
+</mapper>
