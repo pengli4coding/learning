@@ -39,4 +39,10 @@
 		from EMPLOYEES where EMP_NO = #{id}
 	]]>
 	</select>
+	
+		<select id="select" >
+	<![CDATA[
+		select now()
+	]]>
+	</select>
 </mapper>

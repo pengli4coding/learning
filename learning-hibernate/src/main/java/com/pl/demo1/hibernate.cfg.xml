@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- 数据库连接设置 -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://182.254.140.184:3306/hibernate?characterEncoding=utf-8</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">382346819pl</property>
+
+        <!-- 内置的JDBC数据库连接池的配置，初始连接数（一般不用这个内置的，用c3p0的数据库连接池） -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL方言，用于对不同的数据库生成不同的SQL -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <!-- <property name="current_session_context_class">thread</property> -->
+
+        <!-- Disable the second-level cache  -->
+        <!-- <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property> -->
+
+        <!-- 是否打印SQL -->
+        <property name="show_sql">true</property>
+
+        <!-- Drop and re-create the database schema on startup -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+		
+		<!-- 对象-关系映射文件 -->
+        <mapping resource="org/hibernate/tutorial/domain/Event.hbm.xml"/>
+
+    </session-factory>
+
+</hibernate-configuration>

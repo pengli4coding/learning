@@ -24,6 +24,7 @@
 		<module>learning-springmvc</module>
 		<module>learning-springboot</module>
 		<module>learning-JDBC</module>
+		<module>learning-netty</module>
 	</modules>
 
 	<properties>
