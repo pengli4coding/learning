@@ -4,11 +4,11 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.pl.demo2.User" table="TB_USER"><!-- name属性填类的全类名，table属性填表名 -->
+	<class name="com.pl.demo1.User" table="TB_USER"><!-- name属性填类的全类名，table属性填表名 -->
 		<id name="userId" column="USER_ID"><!-- name属性填类的成员变量名，column属性填表中的字段名 -->
 			<generator class="assigned" /><!-- 主键的生成策略，assigned表示主键的值是由java指定的，不是自增的 -->
 		</id>
-		<property name="uname" column="UNAME" length="50"/><!-- name属性填类的成员变量名，column属性填表中的字段名，length属性填字段长度 -->
+		<property name="uname" column="UNAME" length="50"/><!-- name属性填类的成员变量名，column属性填表中的字段名 -->
 		<property name="gender" column="GENDER" /><!-- name属性填类的成员变量名，column属性填表中的字段名 -->
 		<property name="birthday" column="BIRTHDAY" /><!-- name属性填类的成员变量名，column属性填表中的字段名 -->
 	</class>

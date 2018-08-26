@@ -3,14 +3,16 @@ create database hibernate;
 -- 切换到hibernate数据库上
 use hibernate;
 -- 如果存在TB_USER表则删除
+drop table if exists TB_USER;
+-- 创建TB_USER表
 create table TB_USER(
-	ID int unsigned not null auto_increment,
-	NAME varchar(18) not null,
-	SEX char(2) not null,
-	AGE int not null,
-	primary key(ID)
+	USER_ID integer not null,
+	UNAME varchar(50),
+	GENDER integer,
+	BIRTHDAY datetime,
+    primary key (USER_ID)
 )engine=innodb default charset=utf8;
 
 -- 插入两条记录
-insert into TB_USER (ID,NAME,SEX,AGE) values (null,'用户A','男','28');
-insert into TB_USER (ID,NAME,SEX,AGE) values (null,'用户B','女','24');
+-- insert into TB_USER (ID,NAME,SEX,AGE) values (1,'用户A',1,'1990-09-02');
+-- insert into TB_USER (ID,NAME,SEX,AGE) values (2,'用户B',0,'1987-08-01');

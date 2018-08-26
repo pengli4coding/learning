@@ -22,7 +22,7 @@ package com.pl.demo1;
 *第二步：创建一个类User对应着数据库中的表TB_USER
 *第三步：创建配置hibernate.cfg.xml文件
 *第四步：创建配置对象-关系映射文件（文件名的命名规范为类名+.hbm+.xml，如User.hbm.xml）
-*第五步：
+*第五步：创建HibernateUtil用以实例化和获取SessionFactory，注意HibernateUtil获取SessionFactory必须是线程安全的
 *
 *
 *

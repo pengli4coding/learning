@@ -32,7 +32,7 @@
         <!-- <property name="hbm2ddl.auto">update</property> -->
 		
 		<!-- 对象-关系映射文件 -->
-        <mapping resource="org/hibernate/tutorial/domain/Event.hbm.xml"/>
+        <mapping resource="com/pl/demo1/User.hbm.xml"/>
 
     </session-factory>
 
