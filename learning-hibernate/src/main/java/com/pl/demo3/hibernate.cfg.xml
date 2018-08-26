@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- 数据库连接设置 -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://182.254.140.184:3306/hibernate?characterEncoding=utf-8</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">382346819pl</property>
+
+        <!-- 内置的JDBC数据库连接池的配置，初始连接数（一般不用这个内置的，用c3p0的数据库连接池） -->
+        <!-- <property name="connection.pool_size">1</property> -->
+        
+        <!-- c3p0数据库连接池配置 -->
+        <property name="hibernate.c3p0.max_size">5</property><!-- c3p0连接池的最大连接数 -->
+        <property name="hibernate.c3p0.min_size">2</property><!-- c3p0连接池的最小连接数 -->
+        <property name="hibernate.c3p0.timeout">5000</property><!-- c3p0获取连接超时时长，以毫米为单位 -->
+        <property name="hibernate.c3p0.max_statements">50</property><!-- c3p0缓存Statement的数量 -->
+
+        <!-- SQL方言，用于对不同的数据库生成不同的SQL -->
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+
+        <!-- 是否打印SQL -->
+        <property name="show_sql">true</property>
+        
+        <!-- 
+        	设置当创建SessionFactory时，是否建表 ，有如下四个属性值，一般情况下不配置这个，就是每次创建SessionFactory都不做删表建表操作
+        		create-drop：每次创建SessionFactory的时候都会重新删表建表，每次关闭SessionFactory的时候都会删表
+        		create：每次创建SessionFactory的时候都会重新删表建表
+        		update：每次创建SessionFactory的时候，如果数据库中表不存在，则建表
+        		validate：每次创建SessionFactory的时候都会验证创建数据库表结构，只会和数据库中的表进行比较，不会创建新表，但是会插入新值
+        -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+        
+		
+		<!-- 对象-关系映射文件 -->
+        <mapping resource="com/pl/demo3/User.hbm.xml"/>
+
+    </session-factory>
+
+</hibernate-configuration>
