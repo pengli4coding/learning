@@ -2,7 +2,7 @@
 create database mybatis;
 -- 切换到mybatis数据库上
 use mybatis;
--- 如果存在TB_USER表则删除
+-- 如果存在EMPLOYEES表则删除
 create table EMPLOYEES(
 	EMP_NO int(11) unsigned not null auto_increment,
 	BIRTHDAY date not null,
@@ -11,6 +11,8 @@ create table EMPLOYEES(
 	primary key(EMP_NO)
 )engine=innodb default charset=utf8;
 
--- 插入两条记录
+-- 插入几条记录
 insert into EMPLOYEES (EMP_NO,BIRTHDAY,FIRST_NAME,LAST_NAME) values (null,'1990-09-02','li','peng');
-insert into EMPLOYEES (EMP_NO,BIRTHDAY,FIRST_NAME,LAST_NAME) values (null,'1987-09-02','xiu','shui');
+insert into EMPLOYEES (EMP_NO,BIRTHDAY,FIRST_NAME,LAST_NAME) values (null,'1987-09-02','shuixiu','hu');
+insert into EMPLOYEES (EMP_NO,BIRTHDAY,FIRST_NAME,LAST_NAME) values (null,'1990-07-01','xiaoshan','zhang');
+insert into EMPLOYEES (EMP_NO,BIRTHDAY,FIRST_NAME,LAST_NAME) values (null,'1985-11-21','zhenhua','yin');

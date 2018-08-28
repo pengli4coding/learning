@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace:映射文件的命名空间，一般使用映射文件所在报名+映射文件名来指定
+	                  如UserMapper.xml映射文件在com.pl.demo1包下，则指定namespace="com.pl.demo1.UserMapper"
+ -->
+<mapper namespace="com.pl.demo2.EmployeeMapper">
+
+	<!-- 
+		resultMap在什么情况下使用呢？
+		resultMap主要是解决持久化类中的成员变量名与数据库中的字段名不一致的矛盾的（PS：如果这两者是一致的话，则不需要用resultMap，直接用resultType）
+		就是一种映射的关系，映射的这一头是持久化类的成员变量名，另一头是数据库中的字段
+		在大多数的情况下都是要用到resultMap而不用resultType的，主要是因为持久化类中的成员变量名与数据库中的字段名通常情况下都是不一致的
+	 -->
+	 
+	 <!-- 
+	 	#{}的使用详解：
+	 		#{}这种语法就相当于在JDBC中使用PreparedStatement来预编译，相当于PreparedStatement的？语法传参，可以有效防止sql注入
+	 		当只是传入一个参数的时候，如：select * from EMPLOYEES where EMP_NO = #{id}，这时候的名称可以任意，用#{idsdfsd}或#{id}都行
+	 		当传入多个参数的时候，
+	 	${}的使用详解：
+	 		${}这种语法就相当于在JDBC中使用Statement来执行sql，本质上是sql语句的字符串拼接，会有sql注入的风险
+	  -->
+
+	<!-- 
+		标准的resultMap写法，有id标签，对应数据库的主键字段和持久化类中的OID
+		type：持久化类的全类名
+		id：id号
+	 -->
+	<resultMap type="com.pl.demo2.Employee" id="BaseResultMap1">
+		<!-- 
+			id列只有一个
+			column：数据库字段名
+			property：持久化类的成员变量名
+		 -->
+		<id column="EMP_NO" property="empNo"/>
+		<result column="BIRTHDAY" property="birthday"/>
+		<result column="FIRST_NAME" property="firstName"/>
+		<result column="LAST_NAME" property="lastName"/>
+	</resultMap>
+	<!-- 不标准的resultMap写法，没有id标签，全部用result标签 -->
+	<resultMap type="com.pl.demo2.Employee" id="BaseResultMap2">
+		<result column="EMP_NO" property="empNo"/>
+		<result column="BIRTHDAY" property="birthday"/>
+		<result column="FIRST_NAME" property="firstName"/>
+		<result column="LAST_NAME" property="lastName"/>
+	</resultMap>
+	
+	<select id="selectEmployeeById" parameterType="java.lang.Integer" resultMap="BaseResultMap1">
+	<![CDATA[
+		select * from EMPLOYEES where EMP_NO = #{id}
+	]]>
+	</select>
+	
+	<!-- 这是直接在sql语句中指定字段别名对应持久化类中的成员变量名，这时就可以直接用resultType，而不用resultMap了，这种方法也挺直观的 -->
+	<select id="selectEmployeeByIdWithAlias" parameterType="java.lang.Integer" resultType="com.pl.demo2.Employee">
+	<![CDATA[
+		select 
+			EMP_NO      empNo,
+			BIRTHDAY    birthday,
+			FIRST_NAME  firstName,
+			LAST_NAME   lastName
+		from EMPLOYEES where EMP_NO = #{id}
+	]]>
+	</select>
+	
+	<!-- 由于查询返回就一个数，直接用resultType，而不用resultMap了 -->
+	<!-- 如果不需要传参，则不用指定parameterType属性 -->
+	<select id="selectEmployeeCount" resultType="java.lang.Integer">
+	<![CDATA[
+		select count(*) from EMPLOYEES
+	]]>
+	</select>
+	
+	
+	<!-- 如果不需要传参，则不用指定parameterType属性 -->
+	<select id="selectEmployeesAll" resultMap="BaseResultMap1">
+	<![CDATA[
+		select * from EMPLOYEES
+	]]>
+	</select>
+	
+	<!-- 需要传参，则需要指定parameterType属性 -->
+	<select id="selectEmployeesList" parameterType="java.util.Date" resultMap="BaseResultMap1">
+	<![CDATA[
+		select * from EMPLOYEES where BIRTHDAY > #{BIR}
+	]]>
+	</select>
+	
+	<!-- 需要传多个参数的话，#{}中的名称要对应 -->
+	<!-- 
+		传递多个参数的话，有两种方法：
+			第一种方法是：定义一个VO（value object），在parameterType属性中指定这个VO的全类名
+			第二种方法是：传入一个java.util.Map
+		特别注意的是：
+			无论是传object还是map，object中的成员变量名或者map中的key值必须对应#{}中的名称
+	 -->
+	<select id="selectEmployeesByParams1" parameterType="com.pl.demo2.vo.EmployeeQueryCondition1" resultMap="BaseResultMap1">
+	<![CDATA[
+		select * from EMPLOYEES where BIRTHDAY > #{lower} and BIRTHDAY < #{upper}
+	]]>
+	</select>
+	<select id="selectEmployeesByParams2" parameterType="java.util.Map" resultMap="BaseResultMap1">
+	<![CDATA[
+		select * from EMPLOYEES where BIRTHDAY > #{lower} and BIRTHDAY < #{upper}
+	]]>
+	</select>
+	
+	<!-- 
+		${}的主要应用场景：用于like模糊查询中
+		特别注意的是这里传入的参数不能使用java.lang.String，不然会报错，正确的使用类型是封装查询条件的vo类或者java.util.Map类型
+	 -->
+	<select id="selectEmployeesByName" parameterType="java.util.Map" resultMap="BaseResultMap1">
+	<![CDATA[
+		select * from EMPLOYEES where LAST_NAME like '%${name}%'
+	]]>
+	</select>
+	
+	
+	
+</mapper>

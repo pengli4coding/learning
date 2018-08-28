@@ -51,6 +51,6 @@
 	
 	<!-- 指定对象-关系映射文件 -->
 	<mappers>
-		<mapper resource="com/pl/demo2/EmployeesMapper.xml" />
+		<mapper resource="com/pl/demo2/EmployeeMapper.xml" />
 	</mappers>
 </configuration>
