@@ -21,6 +21,7 @@ public class TestDemo1 {
 		//从spring容器中获取bean来用
 		Service service = context.getBean("service", Service.class);
 		service.saveData();
+		
 	}
 
 }
