@@ -1,5 +1,5 @@
 /**
- * @Description:demo3主要学习依赖的注入
+ * @Description:demo3主要学习依赖（常量、bean、集合）的注入
  * @author: 彭立
  * @date: 2018年8月15日 上午9:38:22
  * 
