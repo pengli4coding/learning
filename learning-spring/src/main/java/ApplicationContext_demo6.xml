@@ -12,4 +12,10 @@
 
 	<context:annotation-config /><!-- 要使用注解，必须先加上这一行来开启注解驱动 -->
 
+	<bean id="serviceA" class="com.pl.demo6.ServiceImplA" />
+
+	<!-- <bean id="serviceB" class="com.pl.demo5.ServiceImplB" /> -->
+
+	<bean id="web" class="com.pl.demo6.Web" />
+
 </beans>
