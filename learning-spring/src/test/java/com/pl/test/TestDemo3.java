@@ -1,12 +1,15 @@
 package com.pl.test;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.pl.demo2.Bean1;
-import com.pl.demo2.Bean2;
-import com.pl.demo2.Bean3;
+import com.pl.demo3.Service;
 
 /**
  * @Description:测试类
@@ -17,31 +20,39 @@ import com.pl.demo2.Bean3;
 public class TestDemo3 {
 
 	@Test
-	public void test_instantiation_with_a_constructor() {
+	public void test1() {
 		// 这一行基本是非常固定的，简单理解这一行的作用是读取配置文件并初始化spring容器
-		ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext_demo2.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext_demo3.xml");
 		// 从spring容器中获取bean来用
-		Bean1 bean1 = context.getBean("bean1", Bean1.class);
-		bean1.doSomething();
+		Service service = context.getBean("service", Service.class);
+		service.saveData();
+		service.printDescribe();
 	}
-	
+
 	@Test
-	public void test_instantiation_with_a_static_factory_method() {
+	public void test2() {
 		// 这一行基本是非常固定的，简单理解这一行的作用是读取配置文件并初始化spring容器
-		ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext_demo2.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext_demo3.xml");
 		// 从spring容器中获取bean来用
-		Bean2 bean2 = context.getBean("bean2", Bean2.class);
-		bean2.doSomething();
+		com.pl.demo3.ColletionInjection bean = context.getBean("collection", com.pl.demo3.ColletionInjection.class);
+		Set<String> set = bean.getSet();
+		for (String item : set) {
+			System.out.println(item);
+		}
+		System.out.println("=========================================");
+		List<String> list = bean.getList();
+		for (String item : list) {
+			System.out.println(item);
+		}
+		System.out.println("=========================================");
+		Map<String, String> map = bean.getMap();
+		for(Map.Entry<String, String> entry:map.entrySet()) {
+			System.out.println(entry.getKey()+"\t"+entry.getValue());
+		}
+		System.out.println("=========================================");
+		Properties properties = bean.getProperties();
+		System.out.println(properties);
+
 	}
-	
-	@Test
-	public void test_instantiation_using_an_instance_factory_method() {
-		// 这一行基本是非常固定的，简单理解这一行的作用是读取配置文件并初始化spring容器
-		ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext_demo2.xml");
-		// 从spring容器中获取bean来用
-		Bean3 bean3 = context.getBean("bean3", Bean3.class);
-		bean3.doSomething();
-	}
-	
 
 }
