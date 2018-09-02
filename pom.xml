@@ -27,6 +27,7 @@
 		<module>learning-netty</module>
 		<module>learning-algorithm</module>
 		<module>learning-design-pattern</module>
+		<module>learning-io</module>
 	</modules>
 
 	<properties>
