@@ -26,6 +26,7 @@
 		<module>learning-JDBC</module>
 		<module>learning-netty</module>
 		<module>learning-algorithm</module>
+		<module>learning-design-pattern</module>
 	</modules>
 
 	<properties>
