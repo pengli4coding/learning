@@ -16,6 +16,10 @@ import java.net.UnknownHostException;
  * 
  */
 public class ChatRoom implements Runnable {
+	
+	public static void main(String[] args) {
+		new Thread(new ChatRoom("192.168.3.8",10001)).start();
+	}
 
 	private String ip;
 
