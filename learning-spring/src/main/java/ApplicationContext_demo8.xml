@@ -2,10 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- 特别说明，spring的配置文件一般叫做ApplicationContext.xml，这里为了演示方便，用ApplicationContext_demo1.xml、ApplicationContext_demo2.xml之类的配置文件名 -->
 
@@ -14,6 +17,9 @@
 	
 	<!-- 如果开启自动扫包的话，会自动开启注解驱动，开发员就不用显式的开启注解驱动了 -->
 	<!-- base-package属性指定的是要扫哪个包及它的子包下的带有@Controller、@Service、@Repository、@Component其中之一的类 -->
-	<context:component-scan base-package="com.pl.demo7" />
+	<context:component-scan base-package="com.pl.demo8" />
+	
+	<!-- 开启切面注解驱动 -->
+	<aop:aspectj-autoproxy/>
 
 </beans>

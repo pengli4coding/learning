@@ -19,6 +19,13 @@
 			<version>4.3.18.RELEASE</version>
 		</dependency>
 
+		<!-- spring的AOP切面依赖 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>4.3.18.RELEASE</version>
+		</dependency>
+
 		<!-- 打日志相关 -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
