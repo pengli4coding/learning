@@ -16,12 +16,12 @@ learning项目是本人在学习一些主流开发框架（如spring、springmvc
 - learning-springmvc&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习springmvc框架过程中的样例代码
 - learning-mybatis&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习mybatis框架过程中的样例代码
 - learning-algorithm&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习算法过程中的样例代码
-- learning-design-pattern&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习设计模式过程中的样例代码
-- learning-io&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习io过程中的样例代码
-- learning-JDBC&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习JDBC过程中的样例代码
-- learning-netty&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习netty框架过程中的样例代码
-- learning-springboot&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习springboot框架过程中的样例代码
-- learning-tcp-udp&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习TCP和UDP过程中的样例代码
+- learning-design-pattern&ensp;&ensp;&ensp;&ensp;&ensp;学习设计模式过程中的样例代码
+- learning-io&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习io过程中的样例代码
+- learning-JDBC&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习JDBC过程中的样例代码
+- learning-netty&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习netty框架过程中的样例代码
+- learning-springboot&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习springboot框架过程中的样例代码
+- learning-tcp-udp&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;学习TCP和UDP过程中的样例代码
 
 
 -------------------------------------------------------------------------------
