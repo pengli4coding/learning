@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<name>123</name>
-	<description>123</description>
-
 	<groupId>com.learning</groupId>
 	<artifactId>learning-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
+	<name>learning-springboot</name>
+	<description>123</description>
 
 	<!-- Inherit defaults from Spring Boot -->
 	<parent>
