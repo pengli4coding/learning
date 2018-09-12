@@ -29,6 +29,7 @@
 		<module>learning-design-pattern</module>
 		<module>learning-io</module>
 		<module>learning-tcp-udp</module>
+		<module>learning-json</module>
 	</modules>
 
 	<properties>
