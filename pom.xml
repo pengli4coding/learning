@@ -30,6 +30,7 @@
 		<module>learning-io</module>
 		<module>learning-tcp-udp</module>
 		<module>learning-json</module>
+		<module>learning-multi-thread</module>
 	</modules>
 
 	<properties>
