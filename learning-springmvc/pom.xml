@@ -9,6 +9,34 @@
 	</parent>
 	<artifactId>learning-springmvc</artifactId>
 	<packaging>war</packaging>
-	<name>123</name>
+	<name>learning-springmvc</name>
 	<description>123</description>
+
+	<properties>
+		<spring.version>4.3.18.RELEASE</spring.version>
+		<servlet-api.version>3.1.0</servlet-api.version>
+	</properties>
+
+	<dependencies>
+		<!-- spring的核心依赖，必引 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- springmvc模块 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+		</dependency>
+
+	</dependencies>
 </project>

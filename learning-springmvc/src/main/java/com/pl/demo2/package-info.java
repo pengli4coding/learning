@@ -1,6 +1,6 @@
 
 /**
- * @Description:springmvc的helloworld程序
+ * @Description:demo2主要学习springmvc框架的helloworld程序
  * @author: 彭立
  * @date:   2018年9月11日 下午10:53:29
  *   
