@@ -33,6 +33,7 @@
 		<module>learning-multi-thread</module>
 		<module>learning-concurrent</module>
 		<module>learning-listener</module>
+		<module>learning-jersey</module>
 	</modules>
 
 	<properties>

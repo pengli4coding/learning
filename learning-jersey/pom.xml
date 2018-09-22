@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.learning</groupId>
+		<artifactId>learning-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>learning-jersey</artifactId>
+	<packaging>war</packaging>
+	<name>123</name>
+	<description>123</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<!-- if your container implements Servlet API older than 3.0, use "jersey-container-servlet-core" -->
+			<!-- 如果使用的servlet api版本比3.0旧，则使用"jersey-container-servlet-core" -->
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.27</version>
+		</dependency>
+		<!-- jersey框架的注入操作依赖hk2框架，所以必须要加入hk2的依赖 -->
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>2.27</version>
+		</dependency>
+
+
+		<!-- Required only when you are using JAX-RS Client -->
+		<!-- 如果不使用jersey的客户端，下面的依赖可以去掉 ，个人觉得jersey的客户端就是测试的时候用的，部署到生产环境用不上，可以去掉 -->
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>2.27</version>
+		</dependency>
+
+	</dependencies>
+</project>
