@@ -17,7 +17,7 @@ public class HelloWorldResource {
 		return "hello jersey";
 	}
 
-	@POST // 请求方法为pose方法
+	@POST // 请求方法为POST方法
 	@Path("jsonresponse")
 	@Consumes({ MediaType.APPLICATION_JSON }) // 请求内容的MIME类型为"application/json"
 	@Produces({ MediaType.APPLICATION_JSON }) // 返回内容的MIME类型为"application/json"

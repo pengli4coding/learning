@@ -13,5 +13,9 @@ public class MyApplication extends ResourceConfig{
 	
 	public MyApplication() {
 		packages("com.pl.demo1");//注册com.pl.demo1包下的所有REST资源服务类
+		packages("com.pl.demo2");//注册com.pl.demo2包下的所有REST资源服务类
+		packages("com.pl.demo3");//注册com.pl.demo3包下的所有REST资源服务类
+		packages("com.pl.demo4");//注册com.pl.demo4包下的所有REST资源服务类
+		register(com.pl.demo3.MyRequestFilter.class).register(com.pl.demo3.MyResponseFilter.class);
 	}
 }

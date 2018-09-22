@@ -1,5 +1,5 @@
 /**
- * @Description:
+ * @Description:demo1主要学习基于jersey框架的REST服务搭建
  * @author 彭立
  * @date: 2018-09-22 09:12:01
  *
