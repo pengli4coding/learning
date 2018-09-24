@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+**************************配置属性说明*********************************
+rule层属性解释：
+	type(报文类型)：header为公共报文，business为业务报文
+	interface(报文对应的是哪个接口)：本文档内需唯一
+	remark(报文说明)
+	
+param层属性解释：
+	name(字段名称)：本接口报文配置内需唯一
+	required(是否必填项)：true为必填，false为非必填
+	type(字段类型)：String：字符串  Number：可带小数位的数字  Integer：正整数   Object：业务对象  List：列表数据
+  maxLength 字段最大长度
+     format 字段格式  YYYYMMDD：日期  HHMMSS：时分秒 yyyyMMddHHmmssSSS：时间戳
+    decimal 小数位  只有type=Number时，decimal属性才起作用
+     remark 字段说明
+     maxSize 数组最大长度(type为List时有效)
+     minSize 数组最小长度(type为List时有效)
+ contentType 字段内容格式 0:纯数字  1:纯英文字母(大小写)
+     
+   加签配置说明：
+       需加签的业务报文体需提供signDetail配置项。
+     signContent  加签字段集，按顺序用|分割开
+        charCode  加签字段编码格式
+       algorithm  加签算法
+       
+       
+**************************配置属性说明*********************************
+-->
+
+<rules>
+	<!-- ==============================================以下为公共报文部分======================================================== -->
+	<rule type="header" interface="header" remark="公共报文头">
+		<params>
+			<param name="appkey" required="true" type="String" maxLength="1000" remark="调用方唯一标识"></param>
+		</params>
+	</rule>
+	<!-- ===============================================以下为业务报文部分======================================================= -->
+	<!-- ==========================海康接口5.2================================ -->
+	<rule type="business" interface="pms.res.getParkingInfos" remark="对应海康接口5.2.1获取所有停车场【V2.8.2】"></rule>
+
+	<rule type="business" interface="pms.res.getParkingInfoByParkUuids" remark="对应海康接口5.2.2根据停车场UUID集获取停车场【V2.8.2】">
+		<param name="parkUuids" required="true" type="String" maxLength="100" remark="停车场UUID集"></param>
+	</rule>
+	<!-- ==========================海康接口5.4================================ -->
+	<rule type="business" interface="pms.record.getTempCarChargeRecords" remark="对应海康接口5.4.1分页获取停车场临时车缴费记录（含缴费时间查询）【V2.8.2】">
+		<param name="pageNo" required="true" type="Integer" maxLength="100" remark="当前页码（必须大于0）"></param>
+		<param name="pageSize" required="true" type="Integer" maxLength="100" remark="每页数据记录数（建议400以下，不超过1000）"></param>
+		<param name="parkUuid" required="false" type="String" maxLength="100" remark="停车场UUID"></param>
+		<param name="plateNo" required="false" type="String" maxLength="100" remark="车牌号码（支持模糊查询）"></param>
+		<param name="cardNo" required="false" type="String" maxLength="100" remark="卡号"></param>
+		<param name="chargeType" required="false" type="Integer" maxLength="100" remark="收费类型"></param>
+		<param name="startTime" required="false" type="Long" maxLength="100" remark="开始查询的缴费时间（单位：毫秒）"></param>
+		<param name="endTime" required="false" type="Long" maxLength="100" remark="结束查询的缴费时间（单位：毫秒）"></param>
+	</rule>
+
+</rules>
