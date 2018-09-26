@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace:映射文件的命名空间，一般使用映射文件所在报名+映射文件名来指定
+	                  如UserMapper.xml映射文件在com.pl.demo1包下，则指定namespace="com.pl.demo1.UserMapper"
+ -->
+<mapper namespace="com.pl.demo3.UnitMapper">
+
+	<!-- 
+		resultMap在什么情况下使用呢？
+		resultMap主要是解决持久化类中的成员变量名与数据库中的字段名不一致的矛盾的（PS：如果这两者是一致的话，则不需要用resultMap，直接用resultType）
+		就是一种映射的关系，映射的这一头是持久化类的成员变量名，另一头是数据库中的字段
+		在大多数的情况下都是要用到resultMap而不用resultType的，主要是因为持久化类中的成员变量名与数据库中的字段名通常情况下都是不一致的
+	 -->
+	 
+	 <!-- 
+	 	#{}的使用详解：
+	 		#{}这种语法就相当于在JDBC中使用PreparedStatement来预编译，相当于PreparedStatement的？语法传参，可以有效防止sql注入
+	 		当只是传入一个参数的时候，如：select * from EMPLOYEES where EMP_NO = #{id}，这时候的名称可以任意，用#{idsdfsd}或#{id}都行
+	 		当传入多个参数的时候，
+	 	${}的使用详解：
+	 		${}这种语法就相当于在JDBC中使用Statement来执行sql，本质上是sql语句的字符串拼接，会有sql注入的风险
+	  -->
+
+	<!-- 
+		标准的resultMap写法，有id标签，对应数据库的主键字段和持久化类中的OID
+		type：持久化类的全类名
+		id：id号
+	 -->
+	<resultMap type="com.pl.demo3.Unit" id="BaseResultMap1">
+		<!-- 
+			id列只有一个
+			column：数据库字段名
+			property：持久化类的成员变量名
+		 -->
+		<id column="ID" property="id"/>
+		<result column="UNIT_CODE" property="unitCode"/>
+		<result column="UNIT_NAME" property="unitName"/>
+		<result column="PERSON_COUNT" property="personCount"/>
+	</resultMap>
+	<!-- 不标准的resultMap写法，没有id标签，全部用result标签 -->
+	<resultMap type="com.pl.demo3.Unit" id="BaseResultMap2">
+		<result column="ID" property="id"/>
+		<result column="UNIT_CODE" property="unitCode"/>
+		<result column="UNIT_NAME" property="unitName"/>
+		<result column="PERSON_COUNT" property="personCount"/>
+	</resultMap>
+	
+	
+	<insert id="insertUnit" parameterType="com.pl.demo3.Unit">
+	<![CDATA[
+		insert into t_unit 
+			(UNIT_CODE,UNIT_NAME,PERSON_COUNT)
+		values
+			(#{unitCode},#{unitName},#{personCount})
+	]]>
+	</insert>
+	
+	<update id="updateUnitById" parameterType="com.pl.demo3.Unit">
+	<![CDATA[
+		update t_unit
+		set 
+			UNIT_NAME=#{unitName},PERSON_COUNT=#{personCount}
+		where ID=#{id}
+	]]>
+	</update>
+	
+	<delete id="deleteUnitById" parameterType="java.lang.Integer">
+	<![CDATA[
+		delete from t_unit where ID=#{id}
+	]]>
+	</delete>
+	
+	<select id="selectUnitById" parameterType="java.lang.Integer" resultType="com.pl.demo3.Unit">
+	<![CDATA[
+		select 
+			ID id,
+			UNIT_CODE unitCode,
+			UNIT_NAME unitName,
+			PERSON_COUNT personCount
+		from t_unit where ID=#{id}
+	]]>
+	</select>
+	
+	
+	
+</mapper>
