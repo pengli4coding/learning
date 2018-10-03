@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	使用mybatis提供的基于接口方式的编程后，namespace的属性值是接口的全类名
+ -->
+<mapper namespace="com.pl.demo4.EmployeeDao">
+	
+	<!-- 使用mybatis提供的基于接口方式的编程后，id属性对应接口的方法名称 -->
+	<insert id="insertEmployee" parameterType="com.pl.demo4.Employee">
+	<![CDATA[
+		insert into t_employee (FIRST_NAME,LAST_NAME,GENDER,EMAIL) values (#{firstName},#{lastName},#{gender},#{email})
+	]]>
+	</insert>
+	
+	<!-- 使用mybatis提供的基于接口方式的编程后，id属性对应接口的方法名称 -->
+	<delete id="deleteEmployee" parameterType="java.lang.Integer">
+	<![CDATA[
+		delete from t_employee where ID = #{id}
+	]]>
+	</delete>
+	
+	
+	<!-- 使用mybatis提供的基于接口方式的编程后，id属性对应接口的方法名称 -->
+	<update id="updateEmployee" parameterType="com.pl.demo4.Employee">
+	<![CDATA[
+		update t_employee set EMAIL=#{email} where ID=#{id}
+	]]>
+	</update>
+	
+	
+
+	<!-- 使用mybatis提供的基于接口方式的编程后，id属性对应接口的方法名称 -->
+	<select id="getEmployeeById" parameterType="java.lang.Integer" resultType="com.pl.demo4.Employee">
+	<![CDATA[
+		select ID,FIRST_NAME firstName,LAST_NAME lastName,GENDER gender,EMAIL email from t_employee where ID=#{id}
+	]]>
+	</select>
+	
+	
+	
+	
+</mapper>
