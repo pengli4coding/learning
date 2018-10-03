@@ -93,8 +93,6 @@ public class TestDemo4 {
 			Employee em = dao.getEmployeeById(53);
 			System.out.println(em);
 		} catch (Exception e) {
-			//报错的时候必须要回滚事务
-			sqlSession.rollback();
 			e.printStackTrace();
 		}finally {
 			sqlSession.close();

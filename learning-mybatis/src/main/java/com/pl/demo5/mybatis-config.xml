@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 
+		在properties标签的resource属性中可以指定外部properties资源配置文件的路径地址来引入外部资源文件
+		在内部的property标签中同样可以指定配置
+		在别的地方用${配置名称}来引用具体的配置值
+		这样做的好处是防止一些像数据库连接属性配置的东西被“写死”
+	 -->
+	<properties resource="com/pl/demo5/db.properties">
+		<property name="desc" value="describe"/>
+	</properties>
+	
+	<!-- 
+		settings标签用于改变 MyBatis 的运行时行为，如是否开启缓存，是否开启自动驼峰命名规则（camel case）映射等 
+		mybatis说明文档中有非常详细的配置说明
+	-->
+	<settings>
+		<!-- 
+			是否开启自动驼峰命名规则（camel case）映射
+			这个默认是false的，也就是实体类的成员变量名（如aColumn）与数据库字段名（如A_COLUMN）默认是无法关联上的
+			如果设置为true之后，实体类的成员变量名（如aColumn）与数据库字段名（如A_COLUMN）就可以关联上了
+		 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+	<!-- 
+		typeAlias标签用于为java类在xml文件中定义别名
+			alias属性为指定的别名
+			type属性为全类名
+		其实个人还是比较喜欢写全类名的方式，因为写上全类名就可以点进去看类的内容了
+	 -->
+	<typeAliases>
+		<typeAlias alias="mybean" type="com.pl.demo5.Bean"/>
+	</typeAliases>
+	
+	<!-- 配置类型处理器（未讲解） -->
+	<!-- <typeHandlers></typeHandlers> -->
+	
+	<!-- 配置插件（未讲解） -->
+	<!-- <plugins></plugins> -->
+	
+	
+	<!-- environments标签中可以配置多个数据库配置，但是只能使用其中一个来构建SqlSessionFactory，default属性用来指定用哪个数据库配置 -->
+	<!-- 指定使用开发环境的数据库配置来构建SqlSessionFactory，"development"是开发环境数据库配置的id号 -->
+	<environments default="development">
+		<!-- 开发环境的数据库配置，id必须唯一，如果有多个数据库配置的话则只能使用其中一个来构建SqlSessionFactory -->
+		<environment id="development">
+			<!-- 指定事务管理器类型，type="JDBC"指直接简单使用了JDBC的提交和回滚设置 -->
+			<transactionManager type="JDBC" />
+			<!-- 指定数据源配置，type="POOLED"指使用数据库连接池 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+		<!-- 生产环境的数据库配置，id必须唯一，如果有多个数据库配置的话则只能使用其中一个来构建SqlSessionFactory -->
+		<environment id="production">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+		<!-- 测试环境的数据库配置，id必须唯一，如果有多个数据库配置的话则只能使用其中一个来构建SqlSessionFactory -->
+		<environment id="test">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+		
+	</environments>
+	
+	<!-- 指定对象-关系映射文件 -->
+	<mappers>
+		<mapper resource="com/pl/demo5/BeanMapper.xml" />
+	</mappers>
+</configuration>
