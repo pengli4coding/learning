@@ -15,7 +15,11 @@ import java.io.OutputStream;
  * 
  */
 public class Demo2 {
-
+	/**
+	 * 利用字节流读取文件
+	 * 
+	 * @param filePath
+	 */
 	public static void input(String filePath) {
 		// 指定文件路径
 		File file = new File(filePath);
@@ -34,7 +38,7 @@ public class Demo2 {
 				// String str=new
 				// String(array);//这种是错误的读取方法，因为在最后一次读取字节的时候，实际读取到的字节数有可能小于字节数组缓冲区的长度
 				String str = new String(array, 0, num);// 这种是正确的读取方法，每次根据实际读取到的字节数来转化为字节串
-				System.out.print(str);//这里的打印输出其实并没有太大的意义，而且由于编码方式的不同非常有可能打印出乱码
+				System.out.print(str);// 这里的打印输出其实并没有太大的意义，而且由于编码方式的不同非常有可能打印出乱码
 			}
 			long end = System.currentTimeMillis();
 			System.out.println("读取时间耗时： " + (end - start));
@@ -53,6 +57,11 @@ public class Demo2 {
 		}
 	}
 
+	/**
+	 * 利用字节流写入文件
+	 * 
+	 * @param filePath
+	 */
 	public static void output(String filePath) {
 		// 指定文件路径
 		File file = new File(filePath);
@@ -63,10 +72,10 @@ public class Demo2 {
 			// FileWriter(file,false)，即以覆盖的方式去写文件
 			out = new FileOutputStream(file, true);// 以追加的方式去写文件
 			// 把内容写入到缓冲区
-			String str = "hello world"+System.lineSeparator();
-			//str = "你好";
+			String str = "hello world" + System.lineSeparator();
+			// str = "你好";
 			byte[] array = str.getBytes();// 将字符串转换为字节数组
-			//System.out.println(array.length);
+			// System.out.println(array.length);
 			long start = System.currentTimeMillis();
 			out.write(array, 0, array.length);// 第一个参数是字节数组，第二个参数是从哪个字节开始写入，第三个参数是写入的字节个数（注意不要超限）
 			// 把缓冲区的内容更新到文件中
@@ -85,5 +94,44 @@ public class Demo2 {
 				}
 			}
 		}
+	}
+
+	public static void copyFile(String srcPath, String destPath) {
+		long start = System.currentTimeMillis();
+		File src = new File(srcPath);
+		File dest = new File(destPath);
+		InputStream in = null;
+		OutputStream out = null;
+		try {
+			in = new FileInputStream(src);
+			out = new FileOutputStream(dest);
+			byte[] buffer = new byte[1024];
+			int flag = -1;
+			while ((flag = in.read(buffer)) != -1) {
+				out.write(buffer, 0, flag);
+				out.flush();
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (out != null) {
+					out.close();
+				}
+				if (in != null) {
+					in.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("文件拷贝耗时： " + (System.currentTimeMillis() - start) + "毫秒");
+	}
+
+	public static void main(String[] args) {
+		// output("src/main/java/com/pl/demo2/demo2.txt");
+		// input("src/main/java/com/pl/demo2/demo2.txt");
+		copyFile("src/main/java/com/pl/demo2/待复制图片.jpg", "src/main/java/com/pl/demo2/图片.jpg");
 	}
 }
