@@ -79,6 +79,11 @@ public class MyController {
 		return "index";
 	}
 	
+	/**
+	 * 
+	 * springmvc框架使用servlet原生api的用法
+	 * 
+	 */
 	@RequestMapping(value="/test6",method=RequestMethod.GET)
 	public void test6(HttpServletRequest req,HttpServletResponse resp) throws IOException {
 		String uname = req.getParameter("username");
